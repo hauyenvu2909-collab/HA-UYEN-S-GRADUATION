@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Mời Lễ Tốt Nghiệp - Vũ Thị Hạ Uyên</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #12213e;
+            --bg-color: #faf9f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e5e0d8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-color);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Cover Screen */
+        #cover-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+            transition: opacity 0.6s ease;
+        }
+
+        .envelope-icon {
+            width: 80px;
+            height: 60px;
+            border: 1px solid #c5b59b;
+            background: #f4f0e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            color: #8c7b60;
+            font-size: 20px;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .name-by {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .owner-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            margin: 0 auto 30px auto;
+            color: #c5b59b;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dcd6cd;
+        }
+        .divider span {
+            padding: 0 10px;
+            font-size: 12px;
+        }
+
+        .guest-section {
+            margin-bottom: 30px;
+        }
+
+        .guest-label {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .guest-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .open-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(18, 33, 62, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .open-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* Main Content */
+        #main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .top-banner {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .content-body {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin: 25px 0;
+        }
+
+        .photo-card img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .time-location-section {
+            margin: 30px 0;
+        }
+
+        .date-time-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .date-box, .time-box {
+            flex: 1;
+        }
+
+        .date-box h3, .time-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .vertical-line {
+            width: 1px;
+            height: 40px;
+            background-color: #dcd6cd;
+        }
+
+        /* Calendar Box */
+        .calendar-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-top: 20px;
+        }
+
+        .calendar-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .calendar-table th {
+            color: #888;
+            font-weight: 400;
+            padding-bottom: 8px;
+        }
+
+        .calendar-table td {
+            padding: 8px 0;
+            color: #444;
+        }
+
+        .calendar-table .highlight {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Location Card */
+        .location-card {
+            background: #f4f0e6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .location-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .location-address {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .map-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+
+        /* Message Box */
+        .message-box {
+            border: 1px dashed #c5b59b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            line-height: 1.6;
+            color: #444;
+            font-style: italic;
+            background: white;
+        }
+
+        /* Guestbook */
+        .guestbook-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            background: #fafafa;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <!-- MÀN HÌNH CHỜ (THƯ MỜI BÌA) -->
+    <div id="cover-screen">
+        <div class="envelope-icon">♥</div>
+        <div class="subtitle">Thư mời tham dự</div>
+        <div class="main-title">LỄ TỐT NGHIỆP</div>
+        <div class="name-by">của</div>
+        <div class="owner-name">HẠ UYÊN</div>
+        <div class="divider"><span>♥</span></div>
+        <div class="guest-section">
+            <div class="guest-label">Thương mời</div>
+            <div class="guest-name" id="guest-name-display">Bạn Đoàn Minh Quân</div>
+        </div>
+        <button class="open-btn" onclick="openInvitation()">Mở thiệp →</button>
+    </div>
+
+    <!-- NỘI DUNG CHI TIẾT THIỆP -->
+    <div id="main-content">
+        <div class="top-banner">✈ TIME TO FLY — TOWARDS MY FUTURE</div>
+        
+        <div class="content-body">
+            <div class="subtitle">Thư mời tham dự</div>
+            <div class="main-title">LỄ TỐT NGHIỆP</div>
+            <div class="name-by">của</div>
+            <div class="owner-name">HẠ UYÊN</div>
+            <div class="divider"><span>♥</span></div>
+
+            <!-- Ảnh tốt nghiệp -->
+            <div class="photo-card">
+                <!-- Thay link ảnh tốt nghiệp của bạn vào ô src bên dưới -->
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80" alt="Hạ Uyên Graduation">
+            </div>
+
+            <!-- Thời gian -->
+            <div class="date-time-grid">
+                <div class="date-box">
+                    <div class="subtitle">Ngày</div>
+                    <h3 id="event-date-text">Chủ Nhật<br>23.08.2026</h3>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="time-box">
+                    <div class="subtitle">Giờ</div>
+                    <h3 id="event-time-text">10:00</h3>
+                </div>
+            </div>
+
+            <!-- Lịch tháng 8/2026 -->
+            <div class="calendar-box">
+                <div class="calendar-title">Tháng 8 / 2026</div>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th><th>CN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
+                        <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+                        <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+                        <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><span class="highlight">23</span></td></tr>
+                        <tr><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+                        <tr><td>31</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Địa điểm -->
+            <div class="location-card">
+                <div class="subtitle">Địa điểm</div>
+                <div class="location-title">HT700, Học viện Tài chính</div>
+                <div class="location-address">85 Lê Văn Hiến, Phường Đông Ngạc, TP Hà Nội</div>
+                <a href="https://maps.app.goo.gl/..." target="_blank" class="map-btn">Mở trong Maps ↗</a>
+            </div>
+
+            <!-- Lời ngỏ -->
+            <div class="message-box">
+                "Hành trình phía trước còn dài, nhưng trước khi bước tiếp những bước đi độc lập hơn, mình rất muốn cùng những người thân yêu nhất lưu lại khoảnh khắc tự hào này. Mong sớm gặp bạn trong ngày tốt nghiệp nhé! 🎓"
+            </div>
+
+            <!-- Sổ lưu bút -->
+            <div class="guestbook-section">
+                <div class="section-heading">Sổ lưu bút</div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nhập tên của bạn">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Nhập lời chúc của bạn"></textarea>
+                </div>
+                <button class="submit-btn">Gửi lời chúc</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Xử lý đổi tên khách mời tự động qua đường dẫn (Ví dụ: file.html?to=NguyenVanA)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestParam = urlParams.get('to');
+    
+    if (guestParam) {
+        // Giải mã và hiển thị tên khách mời từ URL
+        document.getElementById('guest-name-display').innerText = decodeURIComponent(guestParam);
+    }
+
+    // Hiệu ứng mở thiệp
+    function openInvitation() {
+        const cover = document.getElementById('cover-screen');
+        const main = document.getElementById('main-content');
+        
+        cover.style.opacity = '0';
+        setTimeout(() => {
+            cover.style.display = 'none';
+            main.style.display = 'block';
+            setTimeout(() => {
+                main.style.opacity = '1';
+            }, 50);
+        }, 600);
+    }
+</script>
+
+</body>
+</html>
